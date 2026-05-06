@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@500;600&family=Manrope:wght@400;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-data: "Lexend", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-surface: #faf9f6;
+  --color-surface-dim: #dadad7;
+  --color-surface-bright: #faf9f6;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f4f4f0;
+  --color-surface-container: #eeeeeb;
+  --color-surface-container-high: #e8e8e5;
+  --color-surface-container-highest: #e3e3df;
+  
+  --color-on-surface: #1a1c1a;
+  --color-on-surface-variant: #424843;
+  --color-outline: #727973;
+  
+  --color-primary: #43634f;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #5c7c67;
+  --color-on-primary-container: #f6fff5;
+  
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  
+  --color-background: #faf9f6;
+  --color-on-background: #1a1c1a;
+  
+  /* Brand accents */
+  --color-berry: #cf4f4f;
+  --color-sun: #e8a838;
+  --color-sky: #5d9cec;
+  --color-sage: #43634f;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+}
+
+.shadow-soft {
+  box-shadow: 0 4px 24px rgba(118, 151, 129, 0.08);
+}
+

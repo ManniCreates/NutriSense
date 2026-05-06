@@ -1,0 +1,90 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with dietary goals and macros",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "goal": { "type": "string" },
+        "restrictions": { "type": "string" },
+        "activity": { "type": "string" },
+        "targetCalories": { "type": "number" },
+        "targetProtein": { "type": "number" },
+        "targetCarbs": { "type": "number" },
+        "targetFat": { "type": "number" },
+        "createdAt": { "type": "number" },
+        "updatedAt": { "type": "number" },
+        "isConfigured": { "type": "boolean" }
+      },
+      "required": ["email", "goal", "isConfigured", "createdAt", "updatedAt"]
+    },
+    "Meal": {
+      "title": "Meal",
+      "description": "A tracked meal",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "calories": { "type": "number" },
+        "protein": { "type": "number" },
+        "carbs": { "type": "number" },
+        "fat": { "type": "number" },
+        "recordedAt": { "type": "number" },
+        "healthInsight": { "type": "string" }
+      },
+      "required": ["userId", "name", "calories", "protein", "carbs", "fat", "recordedAt"]
+    },
+    "ProgressEntry": {
+      "title": "ProgressEntry",
+      "description": "User body metric measurement",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "weight": { "type": "number" },
+        "bodyFat": { "type": "number" },
+        "waist": { "type": "number" },
+        "chest": { "type": "number" },
+        "timestamp": { "type": "number" }
+      },
+      "required": ["userId", "timestamp"]
+    },
+    "SavedRecipe": {
+      "title": "SavedRecipe",
+      "description": "A recipe saved by the user",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "prepTime": { "type": "string" },
+        "calories": { "type": "number" },
+        "protein": { "type": "number" },
+        "carbs": { "type": "number" },
+        "fat": { "type": "number" },
+        "ingredients": { "type": "array", "items": { "type": "string" } },
+        "instructions": { "type": "array", "items": { "type": "string" } },
+        "reason": { "type": "string" },
+        "savedAt": { "type": "number" }
+      },
+      "required": ["userId", "title", "calories", "savedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User profiles"
+    },
+    "/users/{userId}/meals/{mealId}": {
+      "schema": { "$ref": "#/entities/Meal" },
+      "description": "User's recorded meals"
+    },
+    "/users/{userId}/progress/{progressId}": {
+      "schema": { "$ref": "#/entities/ProgressEntry" },
+      "description": "User's progress measurements"
+    },
+    "/users/{userId}/savedRecipes/{recipeId}": {
+      "schema": { "$ref": "#/entities/SavedRecipe" },
+      "description": "User's saved recipes"
+    }
+  }
+}
