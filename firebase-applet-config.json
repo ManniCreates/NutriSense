@@ -1,10 +1,10 @@
 {
-  "projectId": "gen-lang-client-0142418019",
-  "appId": "1:570399806969:web:459aff9f8097d1331bd928",
-  "apiKey": "AIzaSyDAu7f3x12-8EDLNA9R9ChG5--2NocgLmY",
-  "authDomain": "gen-lang-client-0142418019.firebaseapp.com",
-  "firestoreDatabaseId": "ai-studio-9415576b-b5b1-40a9-afb2-3ba21c2eca15",
-  "storageBucket": "gen-lang-client-0142418019.firebasestorage.app",
-  "messagingSenderId": "570399806969",
-  "measurementId": ""
+  "projectId": "nutrisense-cfd0d",
+  "appId": "1:767574983176:web:c1543c764db28cb00307bd",
+  "apiKey": "AIzaSyDbHyO-E05u5v3MeQkiO8AkQTfAjNOsBig",
+  "authDomain": "nutrisense-cfd0d.firebaseapp.com",
+  "firestoreDatabaseId": "(default)",
+  "storageBucket": "nutrisense-cfd0d.firebasestorage.app",
+  "messagingSenderId": "767574983176",
+  "measurementId": "G-D64TMNZFXQ"
 }
