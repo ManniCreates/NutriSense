@@ -35,15 +35,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribeAuth = onAuthStateChanged(auth, (firebaseUser) => {
-      setUser(firebaseUser);
-      if (!firebaseUser) {
-        setProfile(null);
-        setLoading(false);
-      }
-    });
-
-    return () => unsubscribeAuth();
+    // HACKATHON EMERGENCY BYPASS: Instantly log in a mock user
+    const mockUser = {
+      uid: 'hackathon_guest_user',
+      email: 'guest@nutrisense.com',
+      displayName: 'Hackathon Judge',
+    } as User;
+    
+    setUser(mockUser);
+    // Removed onAuthStateChanged to completely bypass Firebase Auth
   }, []);
 
   useEffect(() => {
