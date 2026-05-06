@@ -9,24 +9,16 @@ import { Login } from "./components/Login";
 import { logout } from "./services/firebase";
 
 function AppContent() {
-  const { user, profile, loading } = useAuth();
+  const { user, profile: authProfile, loading } = useAuth();
   const [tab, setTab] = useState<'dashboard' | 'recipes' | 'progress' | 'settings'>('dashboard');
 
-  if (loading) {
-    return <div className="min-h-screen flex items-center justify-center bg-surface-container-lowest">Loading...</div>;
-  }
-
-  if (!user || !profile) {
-    return <Login />;
-  }
-
-  if (!profile.isConfigured) {
-    return (
-      <div className="min-h-screen bg-surface-container-lowest">
-        <Onboarding profile={profile} />
-      </div>
-    );
-  }
+  const profile = {
+    email: 'guest@nutrisense.com',
+    goal: 'Lose Weight',
+    restrictions: 'None',
+    activity: 'Active',
+    isConfigured: true,
+  } as any;
 
   return (
     <div className="flex min-h-screen bg-background font-sans text-on-background">
