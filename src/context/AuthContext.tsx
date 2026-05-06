@@ -47,41 +47,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   useEffect(() => {
-    let unsubscribeProfile = () => {};
-
-    const setupProfile = async () => {
-      if (user) {
-        const docRef = doc(db, 'users', user.uid);
-        unsubscribeProfile = onSnapshot(docRef, (snapshot) => {
-          if (snapshot.exists()) {
-            setProfile(snapshot.data() as UserProfile);
-            setLoading(false);
-          } else {
-            // Document doesn't exist, let's create a base profile
-            const baseProfile: UserProfile = {
-              email: user.email || '',
-              goal: 'Lose Weight',
-              restrictions: '',
-              activity: 'Sedentary',
-              isConfigured: false,
-              createdAt: Date.now(),
-              updatedAt: Date.now()
-            };
-            setDoc(docRef, baseProfile)
-              .then(() => setProfile(baseProfile))
-              .catch(err => handleFirestoreError(err, OperationType.CREATE, 'users'))
-              .finally(() => setLoading(false));
-          }
-        }, (error) => {
-          handleFirestoreError(error, OperationType.GET, 'users');
-          setLoading(false);
-        });
-      }
-    };
-
-    setupProfile();
-
-    return () => unsubscribeProfile();
+    // HACKATHON EMERGENCY BYPASS: Instantly load a mock profile, bypassing Firestore
+    if (user) {
+      const mockProfile: UserProfile = {
+        email: user.email || '',
+        goal: 'Lose Weight',
+        restrictions: 'None',
+        activity: 'Active',
+        isConfigured: true,
+        createdAt: Date.now(),
+        updatedAt: Date.now()
+      };
+      setProfile(mockProfile);
+      setLoading(false);
+    }
   }, [user]);
 
   return (
